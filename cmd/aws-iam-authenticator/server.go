@@ -61,12 +61,11 @@ func init() {
 		"State `directory` for generated certificate and private key (should be a hostPath mount).")
 	viper.BindPFlag("server.stateDir", serverCmd.Flags().Lookup("state-dir"))
 
-	serverCmd.Flags().StringP(
-		"bind",
-		"b",
+	serverCmd.Flags().String(
+		"address",
 		"127.0.0.1",
-		"IP Address to bind the server to listen to. (should be 127.0.0.1 or 0.0.0.0)")
-	viper.BindPFlag("server.bind", serverCmd.Flags().Lookup("bind"))
+		"IP Address to bind the server to listen to. (should be a 127.0.0.1 or 0.0.0.0)")
+	viper.BindPFlag("server.address", serverCmd.Flags().Lookup("address"))
 
 	rootCmd.AddCommand(serverCmd)
 }
